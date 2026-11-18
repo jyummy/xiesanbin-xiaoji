@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>谢三宾年表（1593–1672）</title>
+<!--
+设计判断：
+1. 锚点：晚明刻本 / 朱墨批点。纸色底、墨色正文、朱砂年份，仿古籍卷次体例（卷一至卷九）。
+2. 封面：结构开场 + 超尺度标题。首屏即「谢三宾」三字大标题与朱印「年表」，
+   下接一行生卒与字号，随后直接进入年表时间轨，无图。
+3. 编辑标记：每条纪年以朱色干支年份起首，出处以楷体小字缀于条目末，全页统一。
+4. 禁止项自查：无远程字体、无 Base64 图片、无横向滚动；正文 16px 起。
+-->
+<style>
+:root{
+  --paper:#f3ecdc;
+  --paper-deep:#ece2cc;
+  --ink:#2a241a;
+  --ink-soft:#544c3d;
+  --cinnabar:#9e3226;
+  --cinnabar-deep:#7c2418;
+  --line:#d3c4a4;
+  --kai:"Kaiti SC","STKaiti","KaiTi","楷体",serif;
+  --song:"Songti SC","STSong","SimSun","宋体","Noto Serif CJK SC",serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  background:
+    repeating-linear-gradient(0deg, rgba(120,95,50,.028) 0 1px, transparent 1px 3px),
+    radial-gradient(120% 90% at 50% 0%, var(--paper) 55%, var(--paper-deep) 100%);
+  color:var(--ink);
+  font-family:var(--song);
+  font-size:16px;
+  line-height:1.85;
+  overflow-x:hidden;
+}
+.wrap{max-width:680px;margin:0 auto;padding:0 22px;}
+
+/* ---------- 封面 ---------- */
+.cover{padding:64px 0 34px;position:relative;}
+.cover .kicker{
+  font-family:var(--kai);
+  color:var(--cinnabar);
+  letter-spacing:.5em;
+  font-size:13px;
+  margin-bottom:26px;
+}
+.cover h1{
+  font-size:clamp(64px, 21vw, 118px);
+  font-weight:900;
+  letter-spacing:.06em;
+  line-height:1.08;
+  animation:rise .9s cubic-bezier(.2,.7,.2,1) both;
+}
+.cover h1 .alt{color:var(--cinnabar);}
+.cover .seal{
+  display:inline-block;
+  font-family:var(--kai);
+  font-size:15px;
+  letter-spacing:.35em;
+  color:#f6efe0;
+  background:var(--cinnabar);
+  padding:7px 12px 7px 15px;
+  margin:18px 0 14px;
+  box-shadow:2px 2px 0 rgba(124,36,24,.25);
+  animation:rise .9s .18s cubic-bezier(.2,.7,.2,1) both;
+}
+.cover .dates{
+  font-family:var(--kai);
+  color:var(--ink-soft);
+  font-size:15px;
+  letter-spacing:.12em;
+  animation:rise .9s .3s cubic-bezier(.2,.7,.2,1) both;
+}
+.cover-rule{
+  border:none;
+  border-top:1px solid var(--line);
+  margin:30px 0 0;
+  animation:rise .9s .4s cubic-bezier(.2,.7,.2,1) both;
+}
+@keyframes rise{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+@media (prefers-reduced-motion: reduce){
+  .cover h1,.cover .seal,.cover .dates,.cover-rule{animation:none;}
+}
+
+/* ---------- 导语 ---------- */
+.lead{padding:30px 0 8px;}
+.lead p{margin-bottom:14px;}
+.lead strong{color:var(--cinnabar-deep);font-weight:700;}
+
+/* ---------- 卷（章节） ---------- */
+section{padding:34px 0 6px;}
+.vol-head{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+  border-top:1px solid var(--line);
+  padding-top:20px;
+  margin-bottom:20px;
+}
+.vol-no{
+  font-family:var(--kai);
+  color:var(--cinnabar);
+  font-size:14px;
+  letter-spacing:.3em;
+  white-space:nowrap;
+}
+.vol-title{
+  font-size:24px;
+  font-weight:900;
+  letter-spacing:.05em;
+}
+.vol-span{font-family:var(--kai);color:var(--ink-soft);font-size:13px;margin-left:auto;white-space:nowrap;}
+
+/* ---------- 年表条目 ---------- */
+ul.tl{list-style:none;}
+ul.tl>li{
+  position:relative;
+  padding:0 0 22px 74px;
+}
+ul.tl>li::before{
+  content:"";
+  position:absolute;
+  left:57px;top:8px;bottom:-6px;
+  border-left:1px solid var(--line);
+}
+ul.tl>li:last-child::before{display:none;}
+.yr{
+  position:absolute;
+  left:0;top:2px;
+  width:46px;
+  text-align:right;
+  font-family:var(--kai);
+  color:var(--cinnabar);
+  font-weight:700;
+  font-size:15px;
+  line-height:1.5;
+}
+.yr small{display:block;font-weight:400;color:var(--ink-soft);font-size:11px;letter-spacing:.05em;}
+.evt{margin-bottom:6px;}
+.evt b{font-weight:700;color:var(--ink);}
+.evt .q{
+  display:block;
+  margin:6px 0 0;
+  padding-left:12px;
+  border-left:2px solid var(--cinnabar);
+  font-family:var(--kai);
+  color:var(--ink-soft);
+  font-size:15px;
+}
+.src{
+  display:block;
+  font-family:var(--kai);
+  color:#8a7d63;
+  font-size:12.5px;
+  letter-spacing:.04em;
+  margin-top:4px;
+}
+
+/* ---------- 附记 ---------- */
+.notes{padding:30px 0 60px;}
+.notes h2{font-size:22px;font-weight:900;letter-spacing:.05em;margin-bottom:16px;border-top:1px solid var(--line);padding-top:22px;}
+.notes h3{font-family:var(--kai);color:var(--cinnabar);font-size:15px;letter-spacing:.2em;margin:20px 0 8px;}
+.notes ul{list-style:none;}
+.notes li{padding-left:16px;position:relative;margin-bottom:10px;}
+.notes li::before{content:"·";position:absolute;left:2px;color:var(--cinnabar);font-weight:900;}
+.notes p{margin-bottom:12px;}
+
+footer{
+  border-top:1px solid var(--line);
+  padding:22px 0 46px;
+  font-family:var(--kai);
+  color:#8a7d63;
+  font-size:12.5px;
+  letter-spacing:.06em;
+}
+</style>
+</head>
+<body data-visualization-style="general-editorial">
+
+<div class="wrap">
+
+  <!-- 封面 -->
+  <header class="cover">
+    <div class="kicker">明末清初 · 人物年表</div>
+    <h1>谢三宾<span class="alt">年表</span></h1>
+    <div><span class="seal">字象三 · 号塞翁</span></div>
+    <div class="dates">万历二十一年（1593）—— 康熙十一年（1672） · 浙江鄞县人</div>
+    <hr class="cover-rule">
+  </header>
+
+  <!-- 导语 -->
+  <div class="lead">
+    <p>进士、嘉定知县、巡按山东的监军御史、太仆寺少卿、鲁监国的东阁大学士、两度迎降的降臣、构陷「五君子」的告密者——同时也是《一笑堂诗集》的作者、《嘉定四先生集》的刻书人、宋椠《两汉书》一度的主人。</p>
+    <p>本年表以<strong>《一笑堂诗集》编年内证</strong>（四十初度在军中、庚寅初度自述）与<strong>钱谦益《谢象三五十寿序》</strong>为骨架，参以《续甬上耆旧诗》本传、《鲒埼亭集》诸篇及明清史料辑录，逐年纪事。推算与存疑之处，页末附记说明。</p>
+    <p>他后半生的立场流转只有一条主线，先立在此处，卷六、卷七逐条展开：<strong>明臣（至1645年六月）→ 第一次降清（1645年六月，清廷未授职）→ 投鲁王监国、晋东阁大学士（1645年秋冬）→ 第二次降清（1646年六月，新朝终不用）→ 以告密为进取之路（1647年冬、1648年冬两度）→ 终老于清治下（1672）。</strong></p>
+    <p>而晚年另有一层底色：诗集里「娓娓故国故君之感」，序文托诸抗清志士高隐学——文字与交游如此，行止却终无反清之实，卷八、卷九分说。</p>
+  </div>
+
+  <!-- 卷一 -->
+  <section>
+    <div class="vol-head"><span class="vol-no">卷一</span><span class="vol-title">早年与科第</span><span class="vol-span">1593–1625</span></div>
+    <ul class="tl">
+      <li>
+        <span class="yr">1593<small>万历廿一</small></span>
+        <div class="evt">生于浙江鄞县。生年据《一笑堂诗集》卷二《四十初度时在军中》（崇祯五年在登莱军中）与钱谦益《谢象三五十寿序》（崇祯十五年五十岁）推算。</div>
+        <span class="src">据《一笑堂诗集》《牧斋初学集》卷三十六推算</span>
+      </li>
+      <li>
+        <span class="yr">1621<small>天启元</small></span>
+        <div class="evt"><b>中举，师事钱谦益之始。</b>应浙江乡试中式（是科解元钱塘翁鸿业）。主考为中允钱谦益——「先是二年辛酉，中允钱谦益典试浙江」，《明史·选举志》记是科钱千秋关节案即出此闱。三宾自此为钱氏门生。</div>
+        <span class="src">《明史·选举志》、天启元年辛酉科浙江乡试、谢三宾小传（维基）</span>
+      </li>
+      <li>
+        <span class="yr">1624<small>天启四</small></span>
+        <div class="evt"><b>京师谈兵。</b>秋，钱谦益起复少詹事在京。三宾以举子居京师，出入其邸——「海内士大夫自负才略，好谭兵事者，往往集余邸中，相与清夜置酒，明灯促坐，扼腕奋臂，谈犁庭扫穴之举」。此辈后来「多用兵事显」，三宾即其一。</div>
+        <span class="src">钱谦益《谢象三五十寿序》、《牧斋初学集》</span>
+      </li>
+      <li>
+        <span class="yr">1625<small>天启五</small></span>
+        <div class="evt"><b>成进士，即授嘉定知县。</b>乙丑科二、三甲。是科一甲三名：状元余煌、榜眼华琪芳、探花吴孔嘉，三宾不在一甲。</div>
+        <span class="src">天启五年乙丑科进士题名、谢三宾小传（维基）</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 卷二 -->
+  <section>
+    <div class="vol-head"><span class="vol-no">卷二</span><span class="vol-title">知嘉定县</span><span class="vol-span">1625–1631</span></div>
+    <ul class="tl">
+      <li>
+        <span class="yr">1625<small>天启五</small></span>
+        <div class="evt"><b>知嘉定县。</b>均田均役、疏浚吴淞江。县志称其「英敏绝人，政尚严察，讼狱不越宿……当时称文学吏」。</div>
+        <span class="src">《乾隆嘉定县志》</span>
+      </li>
+      <li>
+        <span class="yr">1626<small>天启六</small></span>
+        <div class="evt"><b>以贽列钱谦益门下。</b>全祖望记：「三宾知嘉定时，以贽列钱受之门下，为之开雕娄唐诸公集」——座师之谊自此转密。</div>
+        <span class="src">全祖望《鲒埼亭集外编·题视师纪略》</span>
+      </li>
+      <li>
+        <span class="yr">1626<small>天启间</small></span>
+        <div class="evt"><b>与董其昌订交。</b>董其昌作《寿谢使君象三》七律：「凤毛标格迥难齐，百里犹称枳棘栖。」后两人究论画理，载《明画录》。</div>
+        <span class="src">董其昌《容台集》、《明画录》</span>
+      </li>
+      <li>
+        <span class="yr">1627<small>天启七</small></span>
+        <div class="evt">捐俸裒刻唐时升、娄坚、程嘉燧、李流芳四家诗文，是为《嘉定四先生集》八十七卷，刻集始此，每集自为之序。</div>
+        <span class="src">《嘉定四先生集》卷前诸序纪年</span>
+      </li>
+      <li>
+        <span class="yr">约1628<small>崇祯元</small></span>
+        <div class="evt">知县三年，入觐京师，李流芳赋《送谢明府入觐》送行：「三年清节照冰霜，百里讴吟彻帝傍。」董其昌《寿谢使君象三》七律亦作于知县任内。</div>
+        <span class="src">李流芳《檀园集》、董其昌《容台集》</span>
+      </li>
+      <li>
+        <span class="yr">1629<small>崇祯二</small></span>
+        <div class="evt">作《檀园集序》。时李流芳病笃，三宾诣视其疾，索其平生诗文，手自芟纂以成斯集。</div>
+        <span class="src">《四库全书总目·檀园集》条</span>
+      </li>
+      <li>
+        <span class="yr">1630<small>崇祯三</small></span>
+        <div class="evt">作《三易集序》《吴歈小草序》，落款「四明謝三賓撰」。门下受业者有嘉定黄淳耀，后追记其论作文之法。童子试赏拔嘉定汪价（1611年生），目之曰「渥洼之神驹也，困以盐车，恐未得千里腾逸」——汪价后终身感此知己之恩。</div>
+        <span class="src">《嘉定四先生集》序、黄淳耀《陶庵全集》、汪价《三侬赘人广自序》（《虞初新志》卷二十）</span>
+      </li>
+      <li>
+        <span class="yr">1631<small>崇祯四</small></span>
+        <div class="evt">《嘉定四先生集》刻成。任满离嘉定。</div>
+        <span class="src">《嘉定四先生集》刻集起讫、钱谦益《嘉定四君集序》</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 卷三 -->
+  <section>
+    <div class="vol-head"><span class="vol-no">卷三</span><span class="vol-title">监军登莱</span><span class="vol-span">1631–1633</span></div>
+    <ul class="tl">
+      <li>
+        <span class="yr">1631<small>崇祯四</small></span>
+        <div class="evt"><b>擢陕西道监察御史。</b>冬，孔有德叛于吴桥，连陷州县。朝廷命西台择御史有文武大略者往视师，「众皆股栗莫敢应，君慨然请行」。</div>
+        <span class="src">谢三宾小传（维基）、钱谦益《谢象三五十寿序》</span>
+      </li>
+      <li>
+        <span class="yr">1632<small>崇祯五</small></span>
+        <div class="evt"><b>六月，巡按山东、兼军前监纪。</b>至昌邑，缇骑逮前督师刘宇烈，三宾恐诸军无主，身至行营宣布朝廷德意，取逃兵在狱者斩之以徇，军中悚然。与山东巡抚朱大典合疏请斩逃帅王洪、刘国柱以明军法。又以催粮亲至黄县，涖催于路，买溃兵所弃驴分畀各营驼粮，「不三日，行营兵食遂充」。四十初度在军中，有诗。</div>
+        <span class="src">谢三宾小传（维基）、《一笑堂诗集》卷二</span>
+      </li>
+      <li>
+        <span class="yr">1632<small>崇祯五</small></span>
+        <div class="evt">李九成等围莱州，疏言「成事在人，了此不过数月」，力主速战。后兵部尚书熊明遇坐主抚误国罢去，复抗疏请绝口勿言抚事。</div>
+        <span class="src">《乾隆鄞县志》</span>
+      </li>
+      <li>
+        <span class="yr">1632<small>崇祯五</small></span>
+        <div class="evt">自述围登州战况：「朱抚与予居密神山顶破庙中，日则视营伍，夜则治军书，扫地为榻，倚马而食。……盖两军相持，胜败呼吸，八月之久，无时不怀丧败之忧也。」</div>
+        <span class="src">《视师纪略》辑存</span>
+      </li>
+      <li>
+        <span class="yr">1633<small>崇祯六</small></span>
+        <div class="evt"><b>登州平，叙功。</b>二月，登州克复，叛众衔尾从海道遁去，东省底定。以解莱复黄功候补京堂；十二月叙功进太仆寺少卿。自作《视师纪略》一卷（一名《笏记》），尽讳其媚高潜、谄刘泽清之丑。</div>
+        <span class="src">谢三宾小传（维基）、全祖望《再读陆太仆年谱》、《千顷堂书目》</span>
+      </li>
+      <li>
+        <span class="yr">1633<small>崇祯六</small></span>
+        <div class="evt">以太公之戚（父丧）归，丁忧守制，既免丧，优游里门，不乐仕进。</div>
+        <span class="src">钱谦益《谢象三五十寿序》</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 卷四 -->
+  <section>
+    <div class="vol-head"><span class="vol-no">卷四</span><span class="vol-title">丁忧 · 杭州 · 藏书</span><span class="vol-span">1636–1643</span></div>
+    <ul class="tl">
+      <li>
+        <span class="yr">1636<small>崇祯九</small></span>
+        <div class="evt">重刻魏了翁《古今考》（附方回《续古今考》）刊成，自为之序，称「苫块余生以较雠架书遣日」。卷端题「明四明謝三賓象三定」。是年长子谢于宣中式丙子科举人。</div>
+        <span class="src">《重刻古今考》卷端题衔、万斯同《书丙子乡试录后》</span>
+      </li>
+      <li>
+        <span class="yr">1638<small>崇祯十一</small></span>
+        <div class="evt">自此常驻杭州，有寓庐藏书。祁彪佳每至杭州辄访三宾，日记屡见。</div>
+        <span class="src">祁彪佳《祁忠敏公日记》（据柴德赓《鲒埼亭集谢三宾考》考述）</span>
+      </li>
+      <li>
+        <span class="yr">约1640<small>崇祯十三</small></span>
+        <div class="evt">与座师钱谦益争柳如是，「遂成仇隙」——师生离合之关键。</div>
+        <span class="src">《续甬上耆旧诗》卷八十本传（年份约）</span>
+      </li>
+      <li>
+        <span class="yr">1642<small>崇祯十五</small></span>
+        <div class="evt">九月五十初度。钱谦益作《谢象三五十寿序》，历数嘉定治绩与监军始末；其长君「孝廉宣子」（于宣）属钱氏为叙。</div>
+        <span class="src">《牧斋初学集》卷三十六</span>
+      </li>
+      <li>
+        <span class="yr">1643<small>崇祯十六</small></span>
+        <div class="evt">以千金购钱谦益宋椠《前、后汉书》（赵孟頫故物，原价千二百金损二百）。钱谦益跋：「床头黄金尽，生平第一杀风景事也。」是年子谢于宣登癸未进士。</div>
+        <span class="src">《牧斋初学集·跋前后汉书》、《藏书纪事诗》、黄宗羲《余恭人传》</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 卷五 -->
+  <section>
+    <div class="vol-head"><span class="vol-no">卷五</span><span class="vol-title">甲申之变</span><span class="vol-span">1644</span></div>
+    <ul class="tl">
+      <li>
+        <span class="yr">1644<small>崇祯十七</small></span>
+        <div class="evt">三月，李自成陷京师。长子行人谢于宣被拷掠死。全祖望谓「三宾富既耦国，遂有以告流贼者……其子于宣方官行人，以此被拷独酷，致死」。</div>
+        <span class="src">全祖望《鲒埼亭集外编·题视师纪略》、徐鼒《小腆纪年》</span>
+      </li>
+      <li>
+        <span class="yr">1644<small>崇祯十七</small></span>
+        <div class="evt">延同里毛来宾设坛追摄亡魂，四十九昼夜，素笺十幅细书皆满，「凡生平履历、家事琐屑……缕缕曲尽」，惧祸尽焚之。</div>
+        <span class="src">《鄞志·毛来宾传》</span>
+      </li>
+      <li>
+        <span class="yr">1644<small>崇祯十七</small></span>
+        <div class="evt">在杭州。祁彪佳出晤谢象三，得书「言贼尚在晋」，借观邸报。是年跋蓝瑛《石勒问道图》。</div>
+        <span class="src">祁彪佳《甲乙日历》、题跋墨迹纪年</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 卷六 -->
+  <section>
+    <div class="vol-head"><span class="vol-no">卷六</span><span class="vol-title">降清 · 投鲁王 · 再降清</span><span class="vol-span">1645–1646</span></div>
+    <ul class="tl">
+      <li>
+        <span class="yr">1645<small>乙酉五</small></span>
+        <div class="evt"><b>明臣生涯结束。</b>五月南京陷，弘光朝亡。</div>
+        <span class="src">《通鉴辑览明季编年》</span>
+      </li>
+      <li>
+        <span class="yr">1645<small>乙酉六</small></span>
+        <div class="evt"><b>第一次降清。</b>潞王降，杭州内附；三宾西行见贝勒归。清廷未授职——此后终其身，新朝再未授他一官。</div>
+        <span class="src">《续甬上耆旧诗》卷八十本传</span>
+      </li>
+      <li>
+        <span class="yr">1645<small>乙酉闰六</small></span>
+        <div class="evt"><b>脱离清方，被裹挟入义师。</b>宁波「六狂生」起兵拥钱肃乐。三宾贻书定海总兵王之仁：「将军以所部来，斩此七人事即定矣，某当以千金为寿。」王之仁于演武场靴中出其书对众朗诵，三宾跪阶下哀号，请输万金充饷乃免。</div>
+        <span class="src">全祖望《钱忠介公神道第二碑铭》</span>
+      </li>
+      <li>
+        <span class="yr">1645<small>乙酉秋冬</small></span>
+        <div class="evt"><b>加入鲁王监国政权。</b>至绍兴，以赂结戚畹张氏，由散僚骤跻东阁大学士参机务——「江东加户部侍郎，晋礼部尚书，不数月，以东阁大学士参机务」；假劝输义饷之名干没里中军需。</div>
+        <span class="src">《续甬上耆旧诗》本传、全祖望《董公神道表》</span>
+      </li>
+      <li>
+        <span class="yr">1646<small>丙戌六</small></span>
+        <div class="evt"><b>第二次降清。</b>清兵渡钱塘，随阮大铖赴江干迎降。阮大铖死于仙霞岭，三宾归宁波。</div>
+        <span class="src">《三藩纪事本末》《通鉴辑览明季编年》</span>
+      </li>
+      <li>
+        <span class="yr">1646<small>丙戌后</small></span>
+        <div class="evt"><b>降清而终不得职。</b>「晚年求用于新朝总仗此多金……而新朝终薄其人不用也。」自此转以告密为进取之路。</div>
+        <span class="src">全祖望《题视师纪略》</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 卷七 -->
+  <section>
+    <div class="vol-head"><span class="vol-no">卷七</span><span class="vol-title">两度告密与五君子之狱</span><span class="vol-span">1647–1649</span></div>
+    <ul class="tl">
+      <li>
+        <span class="yr">1647<small>丁亥冬</small></span>
+        <div class="evt"><b>第一次告密。</b>华夏等约舟山黄斌卿攻宁波为内应，事泄，三宾告之官，夏被拘，以赂得免。</div>
+        <span class="src">黄宗羲《海外恸哭记》、张苍水附传</span>
+      </li>
+      <li>
+        <span class="yr">1648<small>戊子十二</small></span>
+        <div class="evt"><b>第二次告密，五君子之狱。</b>华夏、屠献宸、董德钦、杨文琦、杨文瓒等谋翻城迎鲁王，帛书为三宾所得，告于巡方，五人被逮。杨氏兄弟之祸最烈——「夫已氏尝与太公同学少相好……推官兄弟不复以父友事之，故祸最烈」。</div>
+        <span class="src">黄宗羲《海外恸哭记》、全祖望《鲒埼亭集》诸篇</span>
+      </li>
+      <li>
+        <span class="yr">1648<small>戊子冬</small></span>
+        <div class="evt">清吏利其财，亦诬以同谋下狱。狱中「频叩地称述清功德……备致乞怜态」，自陈「治民若有异心，未敢出两次首也」。</div>
+        <span class="src">高宇泰《雪交亭正气录》</span>
+      </li>
+      <li>
+        <span class="yr">1649<small>己丑五月初二</small></span>
+        <div class="evt">华夏、屠献宸、董德钦、杨文琦、杨文瓒就义，妻子籍没。「五君子」之名由此定。</div>
+        <span class="src">黄宗羲《海外恸哭记》：「明年五月初二日……皆论死」</span>
+      </li>
+      <li>
+        <span class="yr">1648<small>戊子后</small></span>
+        <div class="evt">海道孙枝秀勒取其财殆半；三宾赂大府劾去枝秀以报之，所费亦不赀，「于是其金渐耗，遂蕉萃以至于死」。</div>
+        <span class="src">全祖望《题视师纪略》</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 卷八 -->
+  <section>
+    <div class="vol-head"><span class="vol-no">卷八</span><span class="vol-title">晚年</span><span class="vol-span">1650–1672</span></div>
+    <ul class="tl">
+      <li>
+        <span class="yr">1650<small>庚寅</small></span>
+        <div class="evt">《一笑堂诗集》卷一有《庚寅初度自述》。同年冬钱谦益绛云楼火，宋椠《两汉书》因已售出幸存人间。</div>
+        <span class="src">《一笑堂诗集》卷一、钱谦益《书旧藏宋雕两汉书后》</span>
+      </li>
+      <li>
+        <span class="yr">1658<small>戊戌</small></span>
+        <div class="evt">钱谦益游武林，见两汉书已归张坦公，作重跋。师生复通往还——「牧斋以贫故，不无借于三宾，乃以松习手批《汉书》从之质千金」。</div>
+        <span class="src">《有学集·书旧藏宋雕两汉书后》、《续甬上耆旧诗》本传</span>
+      </li>
+      <li>
+        <span class="yr">晚年<small>顺治—康熙</small></span>
+        <div class="evt">居月湖谢家巷「天赐园」，藏书甚富。工山水，「每与董元宰、李长蘅、程孟阳究论八法，故落笔迥异恒境，然颇自靳惜，不肯多作」。</div>
+        <span class="src">徐沁《明画录》卷二</span>
+      </li>
+      <li>
+        <span class="yr">约1660s<small>康熙初</small></span>
+        <div class="evt"><b>诗中故国之思，序托遗民。</b>晚年诗「娓娓故国故君之感」（全祖望语），又延抗清志士高宇泰（号隐学，《雪交亭正气录》作者）为《一笑堂集》作序。全祖望评：「使后世见《一笑堂集》者，即其娓娓故国故君之感，又托之磥砢大节之高隐学以为之序，倘不知其人，断不敢以为蒲寿宬一辈人也。」——文字与交游如此；然通海、举兵等实际反清行动，诸家考订均无记载。</div>
+        <span class="src">《续甬上耆旧诗》卷八十本传、柴德赓《鲒埼亭集谢三宾考》</span>
+      </li>
+      <li>
+        <span class="yr">1672<small>康熙十一</small></span>
+        <div class="evt">卒。「筐篚元黄之忱，再迎降，三告密，终老牖下。」四孙为辅、为霖、为宪、为衡，「闻其大父之事，黯然神伤……遇故国忠义子弟则深墨其色，曲躬自卑，不敢均茵以示屈抑」。</div>
+        <span class="src">《续甬上耆旧诗》本传、全祖望《甬上人物杂记》</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 卷九 -->
+  <section>
+    <div class="vol-head"><span class="vol-no">卷九</span><span class="vol-title">身后</span><span class="vol-span">1677–1744</span></div>
+    <ul class="tl">
+      <li>
+        <span class="yr">1677<small>康熙十六</small></span>
+        <div class="evt">《一笑堂诗集》四卷刻本行世，收诗八百二十八首。全祖望谓其「娓娓故国故君之感」，故存之以「为听言观行之证」——初拟仿朱彝尊黜阮大铖例不录其诗，因诗中故国之思易使后世误认其为忠义之辈，卒存其诗。柴德赓考注：「三宾诗所以流传于后世者，正赖谢山为之选录。」</div>
+        <span class="src">《一笑堂诗集》刻本、《续甬上耆旧诗》本传</span>
+      </li>
+      <li>
+        <span class="yr">1718<small>约康熙五十七</small></span>
+        <div class="evt">全祖望年十四为诸生，谒学宫见三宾之主，「愤甚，击之不碎，投之泮水」。</div>
+        <span class="src">全祖望《钱忠介公崇祀录跋》（年份据其生年推算）</span>
+      </li>
+      <li>
+        <span class="yr">1744<small>约乾隆九</small></span>
+        <div class="evt">全祖望自记「忽忽二十六年矣」，作《崇祀录跋》。其定评：「丙戌而后，吾乡所最不齿者，无如故太仆谢三宾。其反复无行，构杀故国忠义之士无算。」</div>
+        <span class="src">全祖望《鲒埼亭集外编》</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 附记 -->
+  <div class="notes">
+    <h2>附记：推算与存疑</h2>
+    <h3>生卒与生月</h3>
+    <ul>
+      <li>生年万历二十一年（1593）系推算：崇祯五年（1632）「四十初度时在军中」，上推四十年；与钱谦益崇祯十五年（1642）作五十寿序相合。生月在九月（寿序称「以九月为览揆之辰」）。</li>
+      <li>卒年康熙十一年（1672）从通行记载；《续甬上耆旧诗》本传「丙戌（1646）……又二十余年而死」与之相合。</li>
+    </ul>
+    <h3>存疑待考</h3>
+    <ul>
+      <li>与钱谦益争柳姬的确切年份，诸家记载皆未系年，本表置于崇祯十三年前后，作约数。</li>
+      <li>《视师纪略》成书的具体年月无考，据《千顷堂书目》著录知其一名《笏记》、记平登州乱事。</li>
+      <li>谢于宣中式丙子举人，据万斯同《书丙子乡试录后》篇名推定，非直接纪年。</li>
+      <li>天启元年（1621）中举、天启五年（1625）授嘉定知县、崇祯四年（1631）擢御史、崇祯五年（1632）六月巡按山东、崇祯六年（1633）十二月叙功进太仆寺少卿，均从通行小传（维基）与《明史·选举志》互证；知县任内诸事月份无考。</li>
+      <li>别业「燕子庄」在杭州西湖滨、宁波延庆寺有「寄园」之说，均出晚出资料，可信度中等偏低，姑存备考。</li>
+      <li>晚年诗中故国之思与请高宇泰作序，系文字与交游层面的记载；通海、举兵等实际反清行动，诸家考订均无实据，本表不作推衍。</li>
+    </ul>
+    <h3>主要依据</h3>
+    <ul>
+      <li>《一笑堂诗集》四卷（编年内证）；《牧斋初学集》卷三十六《谢象三五十寿序》、卷三十二《嘉定四君集序》、《跋前后汉书》。</li>
+      <li>全祖望《续甬上耆旧诗》卷八十本传、《鲒埼亭集》及外编诸篇；黄宗羲《海外恸哭记》；高宇泰《雪交亭正气录》。</li>
+      <li>祁彪佳《甲乙日历》《祁忠敏公日记》；杨陆荣《三藩纪事本末》；徐沁《明画录》；《乾隆嘉定县志》；《乾隆鄞县志》；《千顷堂书目》；柴德赓《鲒埼亭集谢三宾考》。</li>
+      <li>谢三宾小传（维基百科，与《明史·选举志》互证）；汪价《三侬赘人广自序》（张潮《虞初新志》卷二十）。</li>
+    </ul>
+  </div>
+
+  <footer>谢三宾年表 · 依《一笑堂诗集》及明清史料辑录编次 · 纪年均用公历，括注干支纪年</footer>
+
+</div>
+</body>
+</html>
